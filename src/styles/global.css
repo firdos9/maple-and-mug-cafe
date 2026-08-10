@@ -51,3 +51,17 @@ body {
   color: var(--color-background);
   margin-top: var(--spacing-5);
 }
+
+.home-page {
+  padding: var(--spacing-4);
+  text-align: center;
+}
+
+.hero {
+  padding: var(--spacing-8) 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--color-primary);
+}
