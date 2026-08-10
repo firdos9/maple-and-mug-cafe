@@ -29,3 +29,17 @@ body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-3);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-3);
+}
