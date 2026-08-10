@@ -1,20 +1,29 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Menu from "../pages/Menu";
-import Gallery from "../pages/Gallery";
-import Contact from "../pages/Contact";
+import { Link } from "react-router-dom";
+import "../styles/global.css";
 
-const AppRoutes = () => {
+const Navbar = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/menu" element={<Menu />} />
-      <Route path="/gallery" element={<Gallery />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
+    <nav className="navbar">
+      <div className="logo">Maple & Mug</div>
+      <ul className="nav-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/menu">Menu</Link>
+        </li>
+        <li>
+          <Link to="/gallery">Gallery</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
-export default AppRoutes;
+export default Navbar;

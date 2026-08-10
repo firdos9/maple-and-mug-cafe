@@ -65,3 +65,17 @@ body {
   font-size: 3rem;
   color: var(--color-primary);
 }
+
+.menu-page {
+  padding: var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.menu-item {
+  border-bottom: 1px solid var(--color-secondary);
+  padding: var(--spacing-3) 0;
+}
+.menu-item h3 {
+  color: var(--color-primary);
+  margin: 0;
+}

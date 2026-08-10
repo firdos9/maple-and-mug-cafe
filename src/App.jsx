@@ -1,11 +1,11 @@
 import AppLayout from "./layouts/AppLayout";
-import Home from "./pages/Home";
+import AppRoutes from "./routes/AppRoutes";
 import "./styles/global.css";
 
 function App() {
   return (
     <AppLayout>
-      <Home />
+      <AppRoutes />
     </AppLayout>
   );
 }
