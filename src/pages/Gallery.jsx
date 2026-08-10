@@ -1,8 +1,19 @@
+import { galleryItems } from "../data/galleryData";
+
 const Gallery = () => {
   return (
-    <div className="page-content">
-      <h1>Gallery</h1>
-      <p>Check out our collection of images!</p>
+    <div className="gallery-page">
+      <h1>Our Gallery</h1>
+      <div className="gallery-grid">
+        {galleryItems.map((image) => (
+          <img
+            key={image.id}
+            src={image.src}
+            alt={image.alt}
+            className="gallery-img"
+          />
+        ))}
+      </div>
     </div>
   );
 };
