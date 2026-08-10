@@ -4,7 +4,9 @@ import "../styles/global.css";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="logo">Maple & Mug</div>
+      <Link to="/" className="logo">
+        Maple & Mug
+      </Link>
       <ul className="nav-links">
         <li>
           <Link to="/">Home</Link>
@@ -25,5 +27,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

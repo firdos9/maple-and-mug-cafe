@@ -112,3 +112,152 @@ button {
   padding: var(--spacing-2) var(--spacing-4);
   cursor: pointer;
 }
+
+/* Hero Styles */
+.hero-title {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-2);
+}
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-4);
+}
+.cta-button {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: 9999px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cta-button:hover {
+  background: #6b4f3a;
+}
+
+/* General Page Styling */
+h1 {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: var(--spacing-1);
+}
+
+/* Better Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--color-background);
+  border-bottom: 2px solid var(--color-secondary);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Menu Cards */
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+}
+.menu-item {
+  background: white;
+  padding: var(--spacing-3);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Compact Hero */
+.hero {
+  padding: var(--spacing-6) 0;
+}
+textarea {
+  width: 100%;
+  padding: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  .nav-links {
+    gap: var(--spacing-2);
+    padding: 0;
+  }
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  .menu-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .menu-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 90%;
+  max-width: 1200px; /* As per manual 3.2 */
+  margin: 0 auto;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero,
+.menu-item,
+.contact-page {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Button hover transition */
+.cta-button {
+  transition: transform 0.2s ease;
+}
+.cta-button:hover {
+  transform: scale(1.05);
+}
