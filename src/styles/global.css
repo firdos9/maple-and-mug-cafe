@@ -93,3 +93,22 @@ body {
   object-fit: cover;
   border-radius: 6px;
 }
+
+.contact-page {
+  padding: var(--spacing-4);
+  max-width: 500px;
+  margin: 0 auto;
+}
+input {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-2) var(--spacing-4);
+  cursor: pointer;
+}
