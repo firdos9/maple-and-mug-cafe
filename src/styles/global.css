@@ -43,3 +43,11 @@ body {
   list-style: none;
   gap: var(--spacing-3);
 }
+
+.footer {
+  text-align: center;
+  padding: var(--spacing-4);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  margin-top: var(--spacing-5);
+}
