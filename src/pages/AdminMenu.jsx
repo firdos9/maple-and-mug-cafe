@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { menuItems } from "../data/menuData";
+import { menuItems as initialData } from "../data/menuData"; // Import as initialData
 
 const AdminMenu = () => {
+  const [menuItems, setMenuItems] = useState(initialData);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleDelete = (id) => {
+    setMenuItems(menuItems.filter((item) => item.id !== id));
+  };
 
   const filteredItems = menuItems.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
