@@ -345,3 +345,23 @@ button {
   border-radius: 4px;
   font-size: 0.8rem;
 }
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-3);
+}
+.kanban-column {
+  background: #f4f4f4;
+  padding: var(--spacing-2);
+  border-radius: 8px;
+  min-height: 400px;
+}
+.order-card {
+  background: white;
+  padding: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
