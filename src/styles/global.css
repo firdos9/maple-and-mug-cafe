@@ -309,3 +309,39 @@ img {
   max-width: 300px;
   margin-bottom: var(--spacing-3);
 }
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+.add-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.status-new {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+.status-preparing {
+  background: #fff3e0;
+  color: #ef6c00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+.status-ready {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}

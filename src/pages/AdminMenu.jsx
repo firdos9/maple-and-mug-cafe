@@ -1,44 +1,92 @@
 import { useState } from "react";
-import { menuItems as initialData } from "../data/menuData"; // Import as initialData
+import { menuItems as initialData } from "../data/menuData";
 
 const AdminMenu = () => {
   const [menuItems, setMenuItems] = useState(initialData);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [newItem, setNewItem] = useState({ name: "", price: "" });
+  const [editingId, setEditingId] = useState(null);
+  const [editValue, setEditValue] = useState({ name: "", price: "" });
 
-  const handleDelete = (id) => {
+  const handleDelete = (id) =>
     setMenuItems(menuItems.filter((item) => item.id !== id));
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    setMenuItems([...menuItems, { id: Date.now(), ...newItem }]);
+    setNewItem({ name: "", price: "" });
   };
 
-  const filteredItems = menuItems.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const startEdit = (item) => {
+    setEditingId(item.id);
+    setEditValue({ name: item.name, price: item.price });
+  };
+
+  const saveEdit = (id) => {
+    setMenuItems(
+      menuItems.map((item) =>
+        item.id === id ? { ...item, ...editValue } : item,
+      ),
+    );
+    setEditingId(null);
+  };
 
   return (
     <div className="admin-page-content">
       <h1>Menu Management</h1>
-      <input
-        type="text"
-        placeholder="Search menu items..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
-      />
+      <form onSubmit={handleAdd} className="add-form">
+        <input
+          placeholder="Name"
+          value={newItem.name}
+          onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+          required
+        />
+        <input
+          placeholder="Price"
+          value={newItem.price}
+          onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
+          required
+        />
+        <button type="submit">Add Item</button>
+      </form>
+
       <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
         <tbody>
-          {filteredItems.map((item) => (
+          {menuItems.map((item) => (
             <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>${item.price}</td>
-              <td>
-                <button>Edit</button> <button>Delete</button>
-              </td>
+              {editingId === item.id ? (
+                <>
+                  <td>
+                    <input
+                      value={editValue.name}
+                      onChange={(e) =>
+                        setEditValue({ ...editValue, name: e.target.value })
+                      }
+                    />
+                  </td>
+                  <td>
+                    <input
+                      value={editValue.price}
+                      onChange={(e) =>
+                        setEditValue({ ...editValue, price: e.target.value })
+                      }
+                    />
+                  </td>
+                  <td>
+                    <button onClick={() => saveEdit(item.id)}>Save</button>
+                  </td>
+                </>
+              ) : (
+                <>
+                  <td>{item.name}</td>
+                  <td>${item.price}</td>
+                  <td className="action-buttons">
+                    <button onClick={() => startEdit(item)}>Edit</button>
+                    <button onClick={() => handleDelete(item.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </>
+              )}
             </tr>
           ))}
         </tbody>
