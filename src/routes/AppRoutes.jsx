@@ -7,6 +7,10 @@ import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import AdminMenu from "../pages/AdminMenu";
+import Orders from "../pages/Orders";
+import Team from "../pages/Team";
+import Settings from "../pages/Settings";
 
 const AppRoutes = () => {
   return (
@@ -19,8 +23,13 @@ const AppRoutes = () => {
       <Route path="/contact" element={<Contact />} />
 
       {/* Admin Routes */}
+
       <Route path="/admin" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
+        <Route path="menu" element={<AdminMenu />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="team" element={<Team />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
