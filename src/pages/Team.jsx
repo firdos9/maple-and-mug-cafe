@@ -1,9 +1,23 @@
-const AdminMenu = () => {
+import { teamMembers } from "../data/teamData";
+
+const Team = () => {
   return (
     <div className="admin-page-content">
-      <h1>Team Management</h1>
-      <p>Manage your cafe team members here.</p>
+      <h1>Cafe Staff</h1>
+      <div className="team-grid">
+        {teamMembers.map((member) => (
+          <div key={member.id} className="team-card">
+            <h3>{member.name}</h3>
+            <p>
+              <strong>Role:</strong> {member.role}
+            </p>
+            <p>
+              <strong>Status:</strong> {member.status}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
-export default AdminMenu;
+export default Team;
