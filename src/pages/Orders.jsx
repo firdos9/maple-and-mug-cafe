@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { initialOrders } from "../data/orderData";
+import { useContext } from "react";
+import { OrderContext } from "../context/OrderContext";
 
 const Orders = () => {
-  const [orders, setOrders] = useState(initialOrders);
+  const { orders, setOrders } = useContext(OrderContext);
 
   const moveOrder = (id, newStatus) => {
     setOrders(
