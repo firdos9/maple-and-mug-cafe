@@ -13,12 +13,11 @@ const Dashboard = () => {
       <h1>Cafe Operations Dashboard</h1>
       <div className="stats-grid">
         <div className="stat-card">
-          <h3>Today's Orders</h3>
+          <h3>Total Orders</h3>
           <p>{totalOrders}</p>
         </div>
         <div className="stat-card">
-          <h3>Preparing</h3>
-          <p>{preparingCount}</p>
+          <h3>Preparing</h3>S<p>{preparingCount}</p>
         </div>
         <div className="stat-card">
           <h3>Ready</h3>
