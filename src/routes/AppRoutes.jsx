@@ -11,6 +11,7 @@ import AdminMenu from "../pages/AdminMenu";
 import Orders from "../pages/Orders";
 import Team from "../pages/Team";
 import Settings from "../pages/Settings";
+import MenuDetails from "../pages/MenuDetails";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
         <Route path="orders" element={<Orders />} />
         <Route path="team" element={<Team />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="menu/:id" element={<MenuDetails />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

@@ -13,6 +13,7 @@ import Orders from "./pages/Orders";
 import Team from "./pages/Team";
 import Settings from "./pages/Settings";
 import "./styles/global.css";
+import MenuDetails from "./pages/MenuDetails";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path="/admin" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="menu" element={<AdminMenu />} />
+        <Route path="menu/:id" element={<MenuDetails />} />
         <Route path="orders" element={<Orders />} />
         <Route path="team" element={<Team />} />
         <Route path="settings" element={<Settings />} />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { menuItems as initialData } from "../data/menuData";
 
 const AdminMenu = () => {
@@ -77,7 +78,9 @@ const AdminMenu = () => {
                 </>
               ) : (
                 <>
-                  <td>{item.name}</td>
+                  <td>
+                    <Link to={`/admin/menu/${item.id}`}>{item.name}</Link>
+                  </td>
                   <td>${item.price}</td>
                   <td className="action-buttons">
                     <button onClick={() => startEdit(item)}>Edit</button>
