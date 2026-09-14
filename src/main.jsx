@@ -1,4 +1,5 @@
 import { OrderProvider } from "./context/OrderContext";
+import { MenuProvider } from "./context/MenuContext";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -9,7 +10,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <OrderProvider>
-        <App />
+        <MenuProvider>
+          <App />
+        </MenuProvider>
       </OrderProvider>
     </BrowserRouter>
   </StrictMode>,

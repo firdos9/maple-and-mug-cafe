@@ -17,7 +17,8 @@ const Dashboard = () => {
           <p>{totalOrders}</p>
         </div>
         <div className="stat-card">
-          <h3>Preparing</h3>S<p>{preparingCount}</p>
+          <h3>Preparing</h3>
+          <p>{preparingCount}</p>
         </div>
         <div className="stat-card">
           <h3>Ready</h3>

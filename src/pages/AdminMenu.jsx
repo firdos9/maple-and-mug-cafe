@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { menuItems as initialData } from "../data/menuData";
+import { MenuContext } from "../context/MenuContext";
 
 const AdminMenu = () => {
-  const [menuItems, setMenuItems] = useState(initialData);
+  const { menuItems, setMenuItems } = useContext(MenuContext);
   const [newItem, setNewItem] = useState({ name: "", price: "" });
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState({ name: "", price: "" });

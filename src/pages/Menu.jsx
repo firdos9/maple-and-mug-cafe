@@ -1,6 +1,8 @@
-import { menuItems } from "../data/menuData";
+import { useContext } from "react";
+import { MenuContext } from "../context/MenuContext";
 
 const Menu = () => {
+  const { menuItems } = useContext(MenuContext);
   return (
     <div className="menu-page">
       <h1>Our Menu</h1>
