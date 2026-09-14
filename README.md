@@ -29,7 +29,7 @@ This project showcases two distinct experiences:
 ### Staff Dashboard (Admin)
 
 - **Operational Overview:** Real-time derived statistics (Today's orders, Revenue).
-- **Menu Management:** Full CRUD (Create, Read, Update, Delete) capability with live search and filtering.
+- **Menu Management:** CRUD (Create, Read, Update, Delete) capability with live search and filtering.
 - **Order Kanban Board:** Interactive status management (New/Preparing/Ready) using React State.
 - **Team Management:** Data-driven staff profiles.
 - **Settings:** Global store status toggle (Open/Closed).

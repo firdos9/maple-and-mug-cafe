@@ -4,32 +4,26 @@ import { MenuContext } from "../context/MenuContext";
 
 const AdminMenu = () => {
   const { menuItems, setMenuItems } = useContext(MenuContext);
-  const [newItem, setNewItem] = useState({ name: "", price: "" });
-  const [editingId, setEditingId] = useState(null);
-  const [editValue, setEditValue] = useState({ name: "", price: "" });
-
-  const handleDelete = (id) =>
-    setMenuItems(menuItems.filter((item) => item.id !== id));
+  // Added description to the initial state
+  const [newItem, setNewItem] = useState({
+    name: "",
+    price: "",
+    description: "",
+  });
 
   const handleAdd = (e) => {
     e.preventDefault();
+    // Strict Validation: Price must be a number
+    if (isNaN(newItem.price) || parseFloat(newItem.price) < 0) {
+      alert("Please enter a valid positive number for the price.");
+      return;
+    }
     setMenuItems([...menuItems, { id: Date.now(), ...newItem }]);
-    setNewItem({ name: "", price: "" });
+    setNewItem({ name: "", price: "", description: "" });
   };
 
-  const startEdit = (item) => {
-    setEditingId(item.id);
-    setEditValue({ name: item.name, price: item.price });
-  };
-
-  const saveEdit = (id) => {
-    setMenuItems(
-      menuItems.map((item) =>
-        item.id === id ? { ...item, ...editValue } : item,
-      ),
-    );
-    setEditingId(null);
-  };
+  const handleDelete = (id) =>
+    setMenuItems(menuItems.filter((item) => item.id !== id));
 
   return (
     <div className="admin-page-content">
@@ -43,53 +37,40 @@ const AdminMenu = () => {
         />
         <input
           placeholder="Price"
+          type="number"
+          step="0.01"
           value={newItem.price}
           onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
           required
+        />
+        <input
+          placeholder="Description"
+          value={newItem.description}
+          onChange={(e) =>
+            setNewItem({ ...newItem, description: e.target.value })
+          }
         />
         <button type="submit">Add Item</button>
       </form>
 
       <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
         <tbody>
           {menuItems.map((item) => (
             <tr key={item.id}>
-              {editingId === item.id ? (
-                <>
-                  <td>
-                    <input
-                      value={editValue.name}
-                      onChange={(e) =>
-                        setEditValue({ ...editValue, name: e.target.value })
-                      }
-                    />
-                  </td>
-                  <td>
-                    <input
-                      value={editValue.price}
-                      onChange={(e) =>
-                        setEditValue({ ...editValue, price: e.target.value })
-                      }
-                    />
-                  </td>
-                  <td>
-                    <button onClick={() => saveEdit(item.id)}>Save</button>
-                  </td>
-                </>
-              ) : (
-                <>
-                  <td>
-                    <Link to={`/admin/menu/${item.id}`}>{item.name}</Link>
-                  </td>
-                  <td>${item.price}</td>
-                  <td className="action-buttons">
-                    <button onClick={() => startEdit(item)}>Edit</button>
-                    <button onClick={() => handleDelete(item.id)}>
-                      Delete
-                    </button>
-                  </td>
-                </>
-              )}
+              <td>
+                <Link to={`/admin/menu/${item.id}`}>{item.name}</Link>
+              </td>
+              <td>${parseFloat(item.price).toFixed(2)}</td>
+              <td className="action-buttons">
+                <button onClick={() => handleDelete(item.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
