@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { MenuContext } from "../context/MenuContext";
 
 const Menu = () => {
-  const { menuItems } = useContext(MenuContext);
+  const { menuItems } = useContext(MenuContext); // Pulls from global truth
   return (
     <div className="menu-page">
       <h1>Our Menu</h1>
@@ -19,5 +19,4 @@ const Menu = () => {
     </div>
   );
 };
-
 export default Menu;

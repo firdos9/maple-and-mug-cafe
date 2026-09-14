@@ -4,16 +4,15 @@ import { MenuContext } from "../context/MenuContext";
 
 const AdminMenu = () => {
   const { menuItems, setMenuItems } = useContext(MenuContext);
-  // Added description to the initial state
   const [newItem, setNewItem] = useState({
     name: "",
     price: "",
     description: "",
   });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
-    // Strict Validation: Price must be a number
     if (isNaN(newItem.price) || parseFloat(newItem.price) < 0) {
       alert("Please enter a valid positive number for the price.");
       return;
@@ -22,12 +21,18 @@ const AdminMenu = () => {
     setNewItem({ name: "", price: "", description: "" });
   };
 
-  const handleDelete = (id) =>
+  const handleDelete = (id) => {
     setMenuItems(menuItems.filter((item) => item.id !== id));
+  };
+
+  const filteredItems = menuItems.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <div className="admin-page-content">
       <h1>Menu Management</h1>
+
       <form onSubmit={handleAdd} className="add-form">
         <input
           placeholder="Name"
@@ -53,6 +58,14 @@ const AdminMenu = () => {
         <button type="submit">Add Item</button>
       </form>
 
+      <input
+        type="text"
+        placeholder="Search menu items..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+
       <table className="admin-table">
         <thead>
           <tr>
@@ -62,12 +75,12 @@ const AdminMenu = () => {
           </tr>
         </thead>
         <tbody>
-          {menuItems.map((item) => (
+          {filteredItems.map((item) => (
             <tr key={item.id}>
               <td>
                 <Link to={`/admin/menu/${item.id}`}>{item.name}</Link>
               </td>
-              <td>${parseFloat(item.price).toFixed(2)}</td>
+              <td>${parseFloat(item.price || 0).toFixed(2)}</td>
               <td className="action-buttons">
                 <button onClick={() => handleDelete(item.id)}>Delete</button>
               </td>
@@ -78,4 +91,5 @@ const AdminMenu = () => {
     </div>
   );
 };
+
 export default AdminMenu;
