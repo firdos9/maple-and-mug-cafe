@@ -12,13 +12,12 @@ import AdminMenu from "./pages/AdminMenu";
 import Orders from "./pages/Orders";
 import Team from "./pages/Team";
 import Settings from "./pages/Settings";
-import "./styles/global.css";
 import MenuDetails from "./pages/MenuDetails";
+import "./styles/global.css";
 
 function App() {
   return (
     <Routes>
-      {/* Customer Routes */}
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
@@ -27,7 +26,6 @@ function App() {
         <Route path="contact" element={<Contact />} />
       </Route>
 
-      {/* Admin Routes */}
       <Route path="/admin" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="menu" element={<AdminMenu />} />
@@ -41,4 +39,5 @@ function App() {
     </Routes>
   );
 }
+
 export default App;
